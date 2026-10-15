@@ -1,26 +1,57 @@
-# Candidate kit
+# Employee Attendance & Analytics API
 
-Read in this order:
+A REST API built using FastAPI and MongoDB to manage employee records, track attendance, and generate analytics.
 
-1. `PROBLEM_STATEMENT.docx`: what you are asked to do, how it is evaluated.
-2. `openapi.yaml`: the API contract and the business rules (R1 - R10).
-3. `DATA_MODEL.md`: what is stored in MongoDB, with nine sample documents.
-4. `app/main.py`: the starter. Put **all** your code in this one file. It must start with `uvicorn app.main:app --port 8000`.
-5. `REVIEW.md`, `DECISIONS.md`: templates to fill in.
+## Technologies Used
+- Python
+- FastAPI
+- MongoDB
+- PyMongo
 
-`sample_data/` holds the nine sample documents as MongoDB Extended JSON; `sample_seed.py` loads them. The grader's dataset is
-much larger and contains cases they do not show.
+## Features
+- Health check
+- Create and list employees
+- Attendance punch-in and punch-out
+- View and correct attendance records
+- Monthly employee attendance analytics
+- Department attendance summary
+- Late-arrival leaderboard
+- Department attendance trends
+- Database query explain endpoint
 
-## Local setup
+## Requirements
+- Python 3.10+
+- MongoDB running locally or remotely
+
+## Installation
+
+Install the required dependencies:
+
 ```bash
-python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env            # set MONGO_URI / MONGO_DB (local docker: docker run -p 27017:27017 mongo:7)
-python sample_seed.py
-uvicorn app.main:app --port 8000 --reload
 ```
-MongoDB **6.0 or newer** is required (the grader uses 7.0). MongoDB Atlas free tier (M0) works.
 
-## Submit
-A public Git repository with `app/main.py`, `requirements.txt`, `REVIEW.md`, `DECISIONS.md` and a short `README.md`.
-No `.env`, no secrets, no Dockerfile.
+Ensure MongoDB is running and configure the required environment variables.
+
+## Run the Application
+
+```bash
+python -m uvicorn app.main:app --port 8002
+```
+
+## API Documentation
+
+After starting the server, open:
+
+http://127.0.0.1:8002/docs
+
+## Project Structure
+
+- `app/main.py` — Main API implementation
+- `requirements.txt` — Project dependencies
+- `openapi.yaml` — API contract
+- `DATA_MODEL.md` — Database model documentation
+- `REVIEW.md` — Starter-code review
+- `DECISIONS.md` — Implementation decisions
+- `sample_data/` — Sample JSON data
+- `sample_seed.py` — Sample data seeding script
